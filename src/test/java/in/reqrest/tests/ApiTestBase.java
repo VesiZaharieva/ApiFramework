@@ -1,4 +1,4 @@
-package in.reqres.test;
+package in.reqrest.tests;
 
 import io.restassured.RestAssured;
 import io.restassured.config.LogConfig;

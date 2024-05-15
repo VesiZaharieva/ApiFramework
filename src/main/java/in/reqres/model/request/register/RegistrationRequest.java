@@ -1,4 +1,4 @@
-package in.reqres.model.reqrest.register;
+package in.reqres.model.request.register;
 
 public class RegistrationRequest {
 

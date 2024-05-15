@@ -1,4 +1,4 @@
-package in.reqres.test.create;
+package in.reqrest.tests.create;
 
 import in.reqres.model.request.create.UserRequest;
 import in.reqres.model.response.create.UserResponse;
@@ -18,7 +18,7 @@ import static org.testng.AssertJUnit.assertNotNull;
             request.setName("morpheus");
             request.setJob("leader");
 
-            UserResponse userResponse = given()
+            UserResponse userResponse = RestAssured.given()
                     .spec(ApiUtils.jsonRequestSpec())
                     .body(request)
                     .when()

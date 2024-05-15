@@ -1,4 +1,4 @@
-package in.reqres.test.registration;
+package in.reqrest.tests.registration;
 
 package in.reqres.tests.registration;
 
@@ -18,22 +18,22 @@ public class RegistrationTests extends ApiTestBase {
 
         RegistrationRequest registrationRequest = new RegistrationRequest("eve.holt@reqres.in", "pistol");
 
-        given()
+        RestAssured.given()
                 .spec(ApiUtils.jsonRequestSpec())
                 .body(registrationRequest)
                 .when()
                 .post("/register")
                 .then()
                 .statusCode(200)
-                .body("id", notNullValue())
-                .body("token", notNullValue());
+                .body("id", Matchers.notNullValue())
+                .body("token", Matchers.notNullValue());
     }
 
     @Test
     public void testUnsuccessfulRegistration(){
         RegistrationRequest registrationRequest = new RegistrationRequest("eve.holt@reqres.in", null);
 
-        given()
+        RestAssured.given()
                 //  .contentType(ContentType.JSON)
                 .spec(ApiUtils.jsonRequestSpec())
                 .body(registrationRequest)
@@ -41,7 +41,7 @@ public class RegistrationTests extends ApiTestBase {
                 .post("/register")
                 .then()
                 .statusCode(400)
-                .body("error", equalTo("Missing password"));
+                .body("error", Matchers.equalTo("Missing password"));
 
     }
 }

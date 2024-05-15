@@ -1,4 +1,4 @@
-package in.reqres.test.singleuser;
+package in.reqrest.tests.singleuser;
 
 package in.reqres.tests.singleuser;
 
@@ -16,7 +16,7 @@ public class SingleUserTests extends ApiTestBase {
 
     @Test
     public void testGetUserDetails() {
-        UserResponse response = given()
+        UserResponse response = RestAssured.given()
                 .when()
                 .pathParam("userId", 2)
                 .when()
@@ -38,16 +38,16 @@ public class SingleUserTests extends ApiTestBase {
 
     @Test
     public void testGetUserDetailsVer2() {
-        given()
+        RestAssured.given()
                 .when()
                 .pathParam("userId", 2)
                 .when()
                 .get("/users/{userId}")
                 .then()
                 .statusCode(200)
-                .body("data.id", equalTo(2))
-                .body("data.email", equalTo("janet.weaver@reqres.in"))
-                .body("support.text", containsString("To keep ReqRes free"));
+                .body("data.id", Matchers.equalTo(2))
+                .body("data.email", Matchers.equalTo("janet.weaver@reqres.in"))
+                .body("support.text", Matchers.containsString("To keep ReqRes free"));
 
 
     }
